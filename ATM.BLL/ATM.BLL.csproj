@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ATM.DAL\ATM.DAL.csproj" />
+    <ProjectReference Include="..\ATM.MODEL\ATM.MODEL.csproj" />
+  </ItemGroup>
+
+</Project>
