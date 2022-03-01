@@ -23,10 +23,21 @@ namespace ATM.UI.Login
         private void btn_enter_Click(object sender, EventArgs e)
         {
             string _accNumber = tct_accNum.Text;
-            bankAccountMananger.findAccount(_accNumber);
-            Login_Form login_Form = new Login_Form();
-            login_Form.Show();
-            this.Hide();
+            
+            try
+            {
+                bankAccountMananger.findAccount(_accNumber);
+                Login_Form login_Form = new Login_Form();
+                login_Form.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
+            
         }
 
         private void btn_clickNewAccount_Click(object sender, EventArgs e)
