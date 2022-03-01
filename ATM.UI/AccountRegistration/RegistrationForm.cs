@@ -51,7 +51,7 @@ namespace ATM.UI.AccountRegistration
                     savingAccount.AccountName = txt_accName.Text;
                     savingAccount.AccountNo = _savingAccTile + _AccNumber;
                     savingAccount.AccountType = combox_accType.SelectedItem.ToString();
-                    savingAccount.PIN = Convert.ToUInt32(txt_PIN.Text);
+                    savingAccount.PIN = long.Parse(txt_PIN.Text);
 
                     if (checkBox_male.Checked == true)
                     {
@@ -63,7 +63,7 @@ namespace ATM.UI.AccountRegistration
                     }
                     savingAccount.OpenDate = dateTimePicker.Value.Date;
                     savingAccount.Address = txt_address.Text;
-                    savingAccount.NID = Convert.ToInt32(txt_NID.Text);
+                    savingAccount.NID = long.Parse(txt_NID.Text);
                     savingAccount.Email = txt_email.Text;
                     savingAccount.PhoneNO = txt_PhonNo.Text;
                     savingAccount.Branch = combox_branch.SelectedItem.ToString();

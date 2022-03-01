@@ -23,11 +23,11 @@ namespace ATM.DAL
                 sqlCommand.Parameters.AddWithValue("@accName", SqlDbType.NVarChar).Value = savingAccount.AccountName;
                 sqlCommand.Parameters.AddWithValue("@accNo", SqlDbType.NVarChar).Value = savingAccount.AccountNo;
                 sqlCommand.Parameters.AddWithValue("@accType", SqlDbType.NVarChar).Value = savingAccount.AccountType;
-                sqlCommand.Parameters.AddWithValue("@PIN", SqlDbType.Int).Value = savingAccount.PIN;
+                sqlCommand.Parameters.AddWithValue("@PIN", SqlDbType.BigInt).Value = savingAccount.PIN;
                 sqlCommand.Parameters.AddWithValue("@gender", SqlDbType.NVarChar).Value = savingAccount.Gender;
                 sqlCommand.Parameters.AddWithValue("@date", SqlDbType.Date).Value = savingAccount.OpenDate;
                 sqlCommand.Parameters.AddWithValue("@address", SqlDbType.NVarChar).Value = savingAccount.Address;
-                sqlCommand.Parameters.AddWithValue("@nid", SqlDbType.Int).Value = savingAccount.NID;
+                sqlCommand.Parameters.AddWithValue("@nid", SqlDbType.BigInt).Value = savingAccount.NID;
                 sqlCommand.Parameters.AddWithValue("@phoneNo", SqlDbType.NVarChar).Value = savingAccount.PhoneNO;
                 sqlCommand.Parameters.AddWithValue("@email", SqlDbType.NVarChar).Value = savingAccount.Email;
                 sqlCommand.Parameters.AddWithValue("@branch", SqlDbType.NVarChar).Value = savingAccount.Branch;
@@ -55,28 +55,34 @@ namespace ATM.DAL
             }
         }
 
-        public string findAccount(string accNumber)
+        public DataTable login(long pin,string accNo)
         {
-            string query = "sp_findAccount";
+            string query = "sp_login";
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@accNumber", SqlDbType.NVarChar).Value = accNumber;
+            cmd.Parameters.AddWithValue("@pin", SqlDbType.BigInt).Value = pin;
+            cmd.Parameters.AddWithValue("@accNo", SqlDbType.NVarChar).Value = accNo;
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
-            string accName="";
-            foreach (DataRow dr in dt.Rows)
-            {
-                 accName = dr["AccName"].ToString();
-            }
-            return accName;
+            return dt;
 
+            
         }
-       public void getaccName()
+
+        public DataTable findAccount(string accNumber)
         {
-            DataTable data = new DataTable();
-          
+            
+                string query = "sp_findAccount";
+                SqlCommand cmd = new SqlCommand(query, sqlConnection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@accNumber", SqlDbType.NVarChar).Value = accNumber;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                 return dt;
         }
+       
         public void Add(CheckingAccount checkingAccount)
         {
             throw new NotImplementedException();

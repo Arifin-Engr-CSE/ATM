@@ -23,9 +23,21 @@ namespace ATM.UI.Login
 
         private void btn_Enter_Click(object sender, EventArgs e)
         {
-            MainMenu mainMenu = new MainMenu();
-            mainMenu.Show();
-            this.Hide();
+            try
+            {
+                string _accNo = BankAccountMananger.accNo;
+                long _pin = long.Parse(txt_pin.Text);
+                bankAccountMananger.login(_pin, _accNo);
+                MainMenu mainMenu = new MainMenu();
+                mainMenu.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
