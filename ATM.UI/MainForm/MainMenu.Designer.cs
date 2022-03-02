@@ -33,12 +33,12 @@ namespace ATM.UI.MainForm
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_checkBalance = new System.Windows.Forms.Button();
+            this.btn_cashDeposit = new System.Windows.Forms.Button();
+            this.btn_fundtranfer = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_cashWithdraw = new System.Windows.Forms.Button();
+            this.btn_miniStatement = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -79,44 +79,46 @@ namespace ATM.UI.MainForm
             this.label1.TabIndex = 0;
             this.label1.Text = "BD Bank Limited";
             // 
-            // button1
+            // btn_checkBalance
             // 
-            this.button1.BackColor = System.Drawing.Color.Lime;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(36, 125);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 46);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Check Balance";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_checkBalance.BackColor = System.Drawing.Color.Lime;
+            this.btn_checkBalance.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_checkBalance.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_checkBalance.ForeColor = System.Drawing.Color.Black;
+            this.btn_checkBalance.Location = new System.Drawing.Point(36, 125);
+            this.btn_checkBalance.Name = "btn_checkBalance";
+            this.btn_checkBalance.Size = new System.Drawing.Size(180, 46);
+            this.btn_checkBalance.TabIndex = 6;
+            this.btn_checkBalance.Text = "Check Balance";
+            this.btn_checkBalance.UseVisualStyleBackColor = false;
+            this.btn_checkBalance.Click += new System.EventHandler(this.btn_checkBalance_Click);
             // 
-            // button2
+            // btn_cashDeposit
             // 
-            this.button2.BackColor = System.Drawing.Color.Lime;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(36, 179);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 46);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Cash Deposit";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_cashDeposit.BackColor = System.Drawing.Color.Lime;
+            this.btn_cashDeposit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_cashDeposit.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_cashDeposit.ForeColor = System.Drawing.Color.Black;
+            this.btn_cashDeposit.Location = new System.Drawing.Point(36, 179);
+            this.btn_cashDeposit.Name = "btn_cashDeposit";
+            this.btn_cashDeposit.Size = new System.Drawing.Size(180, 46);
+            this.btn_cashDeposit.TabIndex = 6;
+            this.btn_cashDeposit.Text = "Cash Deposit";
+            this.btn_cashDeposit.UseVisualStyleBackColor = false;
+            this.btn_cashDeposit.Click += new System.EventHandler(this.btn_cashDeposit_Click);
             // 
-            // button3
+            // btn_fundtranfer
             // 
-            this.button3.BackColor = System.Drawing.Color.Lime;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(36, 232);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(180, 46);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Fund Transfer";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_fundtranfer.BackColor = System.Drawing.Color.Lime;
+            this.btn_fundtranfer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_fundtranfer.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_fundtranfer.ForeColor = System.Drawing.Color.Black;
+            this.btn_fundtranfer.Location = new System.Drawing.Point(36, 232);
+            this.btn_fundtranfer.Name = "btn_fundtranfer";
+            this.btn_fundtranfer.Size = new System.Drawing.Size(180, 46);
+            this.btn_fundtranfer.TabIndex = 6;
+            this.btn_fundtranfer.Text = "Fund Transfer";
+            this.btn_fundtranfer.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
@@ -131,31 +133,31 @@ namespace ATM.UI.MainForm
             this.button4.Text = "Others Services";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btn_cashWithdraw
             // 
-            this.button5.BackColor = System.Drawing.Color.Lime;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button5.ForeColor = System.Drawing.Color.Black;
-            this.button5.Location = new System.Drawing.Point(253, 125);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(180, 46);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Cash Withdrawal";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btn_cashWithdraw.BackColor = System.Drawing.Color.Lime;
+            this.btn_cashWithdraw.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_cashWithdraw.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_cashWithdraw.ForeColor = System.Drawing.Color.Black;
+            this.btn_cashWithdraw.Location = new System.Drawing.Point(253, 125);
+            this.btn_cashWithdraw.Name = "btn_cashWithdraw";
+            this.btn_cashWithdraw.Size = new System.Drawing.Size(180, 46);
+            this.btn_cashWithdraw.TabIndex = 6;
+            this.btn_cashWithdraw.Text = "Cash Withdrawal";
+            this.btn_cashWithdraw.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // btn_miniStatement
             // 
-            this.button6.BackColor = System.Drawing.Color.Lime;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(253, 179);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(180, 46);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Mini Statement";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btn_miniStatement.BackColor = System.Drawing.Color.Lime;
+            this.btn_miniStatement.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_miniStatement.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_miniStatement.ForeColor = System.Drawing.Color.Black;
+            this.btn_miniStatement.Location = new System.Drawing.Point(253, 179);
+            this.btn_miniStatement.Name = "btn_miniStatement";
+            this.btn_miniStatement.Size = new System.Drawing.Size(180, 46);
+            this.btn_miniStatement.TabIndex = 6;
+            this.btn_miniStatement.Text = "Mini Statement";
+            this.btn_miniStatement.UseVisualStyleBackColor = false;
             // 
             // button7
             // 
@@ -227,11 +229,11 @@ namespace ATM.UI.MainForm
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_fundtranfer);
+            this.Controls.Add(this.btn_miniStatement);
+            this.Controls.Add(this.btn_cashDeposit);
+            this.Controls.Add(this.btn_cashWithdraw);
+            this.Controls.Add(this.btn_checkBalance);
             this.Controls.Add(this.panel1);
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -250,12 +252,12 @@ namespace ATM.UI.MainForm
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_checkBalance;
+        private System.Windows.Forms.Button btn_cashDeposit;
+        private System.Windows.Forms.Button btn_fundtranfer;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btn_cashWithdraw;
+        private System.Windows.Forms.Button btn_miniStatement;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel2;

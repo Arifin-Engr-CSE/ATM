@@ -55,6 +55,34 @@ namespace ATM.DAL
             }
         }
 
+        public DataTable checkBalance(string accNo, long pin)
+        {
+            string query = "sp_checkBalance";
+            SqlCommand cmd = new SqlCommand(query, sqlConnection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@accNumber", SqlDbType.NVarChar).Value = accNo;
+            cmd.Parameters.AddWithValue("@pin", SqlDbType.BigInt).Value = pin;
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            return dt;
+        }
+
+       
+
+        public void deposit(long amount,long pin,string accNo)
+        {
+            string query = "sp_deposit";
+            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("@amount", SqlDbType.BigInt).Value = amount;
+            sqlCommand.Parameters.AddWithValue("@pin", SqlDbType.BigInt).Value = pin;
+            sqlCommand.Parameters.AddWithValue("@accNo", SqlDbType.NVarChar).Value = accNo;
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
         public DataTable login(long pin,string accNo)
         {
             string query = "sp_login";

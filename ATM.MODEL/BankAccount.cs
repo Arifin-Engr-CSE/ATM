@@ -26,7 +26,7 @@ namespace ATM.MODEL
         }
         public BankAccount()
         {
-            this.Balance = 0.00;
+            this.Balance = 00;
         }
         public int Id { get; set; }
         public string AccountName { get; set; }
@@ -41,9 +41,9 @@ namespace ATM.MODEL
         public string AccountType { get; set; }
         public DateTime OpenDate { get; set; }
         public byte[] Image { get; set; }
-        public double Balance { get; set; }
+        public long Balance { get; set; }
 
-        public double deposit(double amount)
+        public double deposit(decimal amount)
         {
             throw new NotImplementedException();
         }

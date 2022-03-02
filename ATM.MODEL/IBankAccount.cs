@@ -8,7 +8,7 @@ namespace ATM.BLL
 {
    public interface IBankAccount
     {
-        public double deposit(double amount);
+        public double deposit(decimal amount);
         public double withdrawal(double amount);
     }
 }

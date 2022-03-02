@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ATM.UI.BalanceForm;
+using ATM.UI.DepositForm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +23,20 @@ namespace ATM.UI.MainForm
         {
             this.Close();
             
+        }
+
+        private void btn_checkBalance_Click(object sender, EventArgs e)
+        {
+            BalanceMenu balanceMenu = new BalanceMenu();
+            this.Hide();
+            balanceMenu.Show();
+        }
+
+        private void btn_cashDeposit_Click(object sender, EventArgs e)
+        {
+            DepositMenu depositMenu = new DepositMenu();
+            this.Hide();
+            depositMenu.Show();
         }
     }
 }
