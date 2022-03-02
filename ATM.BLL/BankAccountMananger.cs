@@ -15,6 +15,8 @@ namespace ATM.BLL
         AccountRepository accountRepository = new AccountRepository();
         public static string accName;
         public static string accNo;
+        public static long balance = 00;
+        public static long pin;
         //SavingAccount
         public void Add(SavingAccount savingAccount)
         {
@@ -35,6 +37,34 @@ namespace ATM.BLL
                 throw new Exception("invalid input");
             }
             
+        }
+        public long checkBalance(string accNo,long pin)
+        {
+            long _balance=00;
+            if (pin > 0 && accNo != "")
+            {
+                DataTable dt = new DataTable();
+
+               dt= accountRepository.checkBalance( accNo,pin);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    _balance = long.Parse(dr["Balance"].ToString());
+                }
+            }
+            return _balance;
+        }
+        public void deposit(long amount, long pin, string accNo)
+        {
+            
+            if (amount>0 && pin > 0 && accNo != "")
+            {
+                accountRepository.deposit(amount, pin, accNo);
+                throw new Exception("Depsited Successfully...");
+            }
+            else
+            {
+                throw new Exception("operation filed..try again");
+            }
         }
 
         public void login(long pin,string accNo)
@@ -62,6 +92,7 @@ namespace ATM.BLL
 
         public void findAccount(string accNumber)
         {
+            
             DataTable data = new DataTable();
                 if (accNumber != "")
                 {
@@ -70,8 +101,13 @@ namespace ATM.BLL
                 {
                     foreach (DataRow dr in data.Rows)
                     {
+                        //SAV179                                                                                              
                         accName = dr["AccName"].ToString();
                         accNo = dr["AccNo"].ToString();
+                        pin = long.Parse(dr["PIN"].ToString());
+                        balance =long.Parse(dr["Balance"].ToString());
+                        pin =long.Parse(dr["PIN"].ToString());
+                        
                     }
                 }
                 else
