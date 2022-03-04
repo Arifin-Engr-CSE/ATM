@@ -38,5 +38,10 @@ namespace ATM.UI.MainForm
             this.Hide();
             depositMenu.Show();
         }
+
+        private void btn_miniStatement_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

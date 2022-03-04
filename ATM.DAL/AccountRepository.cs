@@ -17,7 +17,9 @@ namespace ATM.DAL
         {
             try
             {
+                
                 string query = "sp_CreateAccount";
+
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Parameters.AddWithValue("@accName", SqlDbType.NVarChar).Value = savingAccount.AccountName;
@@ -37,7 +39,7 @@ namespace ATM.DAL
                 
                 if (row==true)
                 {
-                    throw new Exception("Successfully Submited.. " + "AccNo: " + savingAccount.AccountNo + " PIN: " + savingAccount.PIN);
+                    throw new Exception("Successfully Submited.... " + "AccNo: " + savingAccount.AccountNo + " PIN: " + savingAccount.PIN);
                 }
                 else
                 {
