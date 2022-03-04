@@ -11,7 +11,7 @@ namespace ATM.DAL
 {
     public class AccountRepository : IAccountRepository
     {
-        public static string connectionString = "data source=.;database=Test_DB_26;integrated security=true";
+        public static string connectionString = "data source=.;database=Test_DB_01;integrated security=true";
         SqlConnection sqlConnection = new SqlConnection(connectionString);
         public void Add(SavingAccount savingAccount)
         {

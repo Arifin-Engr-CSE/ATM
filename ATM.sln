@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATM.MODEL", "ATM.MODEL\ATM.
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ATM.Database", "ATM.Database\ATM.Database.sqlproj", "{1FB624CC-2607-4F7E-8ED2-F18E3F819E99}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{EBE1C492-9D5E-40B7-9344-199789BDD59E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
