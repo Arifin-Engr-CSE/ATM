@@ -158,6 +158,7 @@ namespace ATM.UI.MainForm
             this.btn_miniStatement.TabIndex = 6;
             this.btn_miniStatement.Text = "Mini Statement";
             this.btn_miniStatement.UseVisualStyleBackColor = false;
+            this.btn_miniStatement.Click += new System.EventHandler(this.btn_miniStatement_Click);
             // 
             // button7
             // 
