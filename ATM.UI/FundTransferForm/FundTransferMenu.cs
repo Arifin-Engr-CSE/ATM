@@ -55,6 +55,8 @@ namespace ATM.UI.FundTransferForm
                 bankAccountMananger.fundTransfer(_toAccName, _toAccNo, _toBranch, _amount, _fromAccNo, _fromAccName, _fromBranch, _pin);
                 clear();
 
+
+
             }
             catch (Exception ex)
             {
