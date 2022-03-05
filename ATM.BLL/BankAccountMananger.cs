@@ -10,13 +10,18 @@ using System.Threading.Tasks;
 
 namespace ATM.BLL
 {
-    public class BankAccountMananger
+    public class BankAccountMananger: BankAccount,IBankAccountMananger
     {
+        
         AccountRepository accountRepository = new AccountRepository();
         public static string accName;
         public static string accNo;
         public static long balance = 00;
         public static long pin;
+        public static string accType;
+        public static string branch;
+
+
         //SavingAccount
         public void Add(SavingAccount savingAccount)
         {
@@ -38,6 +43,30 @@ namespace ATM.BLL
             }
             
         }
+
+        public void fundTransfer(string toAccName,string toAccNo, string toBranch,long amount,string fromAccNo,string fromAccName,string fromBranch,long pin)
+        {
+            if (toAccName !="" && toAccNo!="" && toBranch!=""&& amount>0)
+            {
+                long _balance = checkBalance(accNo, pin);
+                if (_balance>amount)
+                {
+                    accountRepository.fundTransfer(toAccName, toAccNo, toBranch, amount, fromAccNo, fromAccName, fromBranch, pin);
+                    throw new Exception("Successfully Transfered");
+                }
+                else
+                {
+                    throw new Exception("Amount too large than Balance..");
+                }
+               
+            }
+            else
+            {
+                throw new Exception("invalid input..");
+            }
+        }
+
+
         public long checkBalance(string accNo,long pin)
         {
             long _balance=00;
@@ -55,8 +84,8 @@ namespace ATM.BLL
         }
         public void deposit(long amount, long pin, string accNo)
         {
-            
-            if (amount>0 && pin > 0 && accNo != "")
+
+            if (amount > 0 && pin > 0 && accNo != "")
             {
                 accountRepository.deposit(amount, pin, accNo);
                 throw new Exception("Depsited Successfully...");
@@ -103,10 +132,14 @@ namespace ATM.BLL
                     {
                         //SAV179                                                                                              
                         accName = dr["AccName"].ToString();
+                        accType = dr["AccType"].ToString();
                         accNo = dr["AccNo"].ToString();
                         pin = long.Parse(dr["PIN"].ToString());
                         balance =long.Parse(dr["Balance"].ToString());
                         pin =long.Parse(dr["PIN"].ToString());
+                        branch =dr["Branch"].ToString();
+
+
                         
                     }
                 }
@@ -128,7 +161,54 @@ namespace ATM.BLL
         //checking Account
         public void Add(CheckingAccount checkingAccount)
         {
-            throw new NotImplementedException();
+            if (checkingAccount != null)
+            {
+                if (checkingAccount.Image != null && checkingAccount.AccountNo != null && checkingAccount.AccountName != null)
+                {
+                    accountRepository.Add(checkingAccount);
+                    throw new Exception("Successfully Submited.. " + "AccNo: " + checkingAccount.AccountNo + " PIN: " + checkingAccount.PIN);
+                }
+                else
+                {
+                    throw new Exception("Some filed empty....");
+                }
+            }
+            else
+            {
+                throw new Exception("invalid input");
+            }
         }
+
+        public virtual void withdraw(long amount, long pin, string accNo,string accType)
+        {
+            long _balance = checkBalance(accNo, pin);
+            string _accType = "CheckingAccount";
+            if (amount > 0 && pin > 0 && accNo != "")
+            {
+                if (accType.TrimEnd()== "CheckingAccount")
+                {
+                   
+                    accountRepository.withdraw(amount, pin, accNo);
+                    throw new Exception("Successfully withrawn...");
+                }
+                else
+                {
+                    if (_balance - amount>0)
+                    {
+                        accountRepository.withdraw(amount, pin, accNo);
+                        throw new Exception("Successfully withrawn...");
+                    }
+                    else
+                    {
+                        throw new Exception("! Insufficient Balance...");
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("amount invalid..");
+            }
+        }
+       
     }
 }

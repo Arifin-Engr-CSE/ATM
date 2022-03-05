@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATM.MODEL
 {
-   public class BankAccount: IBankAccount
+   public class BankAccount
     {
         public BankAccount(string accName,string acc_No, string accType,long pin,string gender,long nid,string address,string email,string phoneNo,string branch,DateTime date,byte[] image)
         {
@@ -43,15 +43,9 @@ namespace ATM.MODEL
         public byte[] Image { get; set; }
         public long Balance { get; set; }
 
-        public double deposit(decimal amount)
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public double withdrawal(double amount)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         
     }

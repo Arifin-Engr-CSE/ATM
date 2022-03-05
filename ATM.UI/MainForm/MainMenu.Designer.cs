@@ -119,6 +119,7 @@ namespace ATM.UI.MainForm
             this.btn_fundtranfer.TabIndex = 6;
             this.btn_fundtranfer.Text = "Fund Transfer";
             this.btn_fundtranfer.UseVisualStyleBackColor = false;
+            this.btn_fundtranfer.Click += new System.EventHandler(this.btn_fundtranfer_Click);
             // 
             // button4
             // 
@@ -145,6 +146,7 @@ namespace ATM.UI.MainForm
             this.btn_cashWithdraw.TabIndex = 6;
             this.btn_cashWithdraw.Text = "Cash Withdrawal";
             this.btn_cashWithdraw.UseVisualStyleBackColor = false;
+            this.btn_cashWithdraw.Click += new System.EventHandler(this.btn_cashWithdraw_Click);
             // 
             // btn_miniStatement
             // 

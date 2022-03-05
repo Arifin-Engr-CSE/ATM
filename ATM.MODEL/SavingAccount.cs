@@ -15,6 +15,6 @@ namespace ATM.MODEL
         }
         public double InterestAmont { get; set; }
 
-       
+        
     }
 }
