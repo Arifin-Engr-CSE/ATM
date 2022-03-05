@@ -56,7 +56,6 @@ namespace ATM.UI.FundTransferForm
                 clear();
 
 
-
             }
             catch (Exception ex)
             {
