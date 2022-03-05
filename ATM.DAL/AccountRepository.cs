@@ -57,6 +57,28 @@ namespace ATM.DAL
             }
         }
 
+        public void fundTransfer(string toAccName, string toAccNo, string toBranch, long amount, string fromAccNo, string fromAccName, string fromBranch, long pin)
+        {
+            string query = "sp_fundTransfer";
+            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("@amount", SqlDbType.BigInt).Value = amount;
+
+            sqlCommand.Parameters.AddWithValue("@fromAccNo", SqlDbType.NVarChar).Value = fromAccNo;
+            sqlCommand.Parameters.AddWithValue("@fromAccName", SqlDbType.NVarChar).Value = fromAccName;
+            sqlCommand.Parameters.AddWithValue("@fromBranch", SqlDbType.NVarChar).Value = fromBranch;
+            sqlCommand.Parameters.AddWithValue("@fromPin", SqlDbType.BigInt).Value = pin;
+
+            sqlCommand.Parameters.AddWithValue("@toAccNo", SqlDbType.NVarChar).Value = toAccNo;
+            sqlCommand.Parameters.AddWithValue("@toAccName", SqlDbType.NVarChar).Value = toAccName;
+            sqlCommand.Parameters.AddWithValue("@toBranch", SqlDbType.NVarChar).Value = toBranch;
+            
+
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
         public DataTable checkBalance(string accNo, long pin)
         {
             string query = "sp_checkBalance";
@@ -69,8 +91,6 @@ namespace ATM.DAL
             sda.Fill(dt);
             return dt;
         }
-
-       
 
         public void deposit(long amount,long pin,string accNo)
         {
@@ -115,7 +135,59 @@ namespace ATM.DAL
        
         public void Add(CheckingAccount checkingAccount)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                string query = "sp_CreateAccount";
+
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@accName", SqlDbType.NVarChar).Value = checkingAccount.AccountName;
+                sqlCommand.Parameters.AddWithValue("@accNo", SqlDbType.NVarChar).Value = checkingAccount.AccountNo;
+                sqlCommand.Parameters.AddWithValue("@accType", SqlDbType.NVarChar).Value = checkingAccount.AccountType;
+                sqlCommand.Parameters.AddWithValue("@PIN", SqlDbType.BigInt).Value = checkingAccount.PIN;
+                sqlCommand.Parameters.AddWithValue("@gender", SqlDbType.NVarChar).Value = checkingAccount.Gender;
+                sqlCommand.Parameters.AddWithValue("@date", SqlDbType.Date).Value = checkingAccount.OpenDate;
+                sqlCommand.Parameters.AddWithValue("@address", SqlDbType.NVarChar).Value = checkingAccount.Address;
+                sqlCommand.Parameters.AddWithValue("@nid", SqlDbType.BigInt).Value = checkingAccount.NID;
+                sqlCommand.Parameters.AddWithValue("@phoneNo", SqlDbType.NVarChar).Value = checkingAccount.PhoneNO;
+                sqlCommand.Parameters.AddWithValue("@email", SqlDbType.NVarChar).Value = checkingAccount.Email;
+                sqlCommand.Parameters.AddWithValue("@branch", SqlDbType.NVarChar).Value = checkingAccount.Branch;
+                sqlCommand.Parameters.AddWithValue("@image", SqlDbType.Image).Value = checkingAccount.Image;
+                sqlConnection.Open();
+                bool row = sqlCommand.ExecuteNonQuery() > 0;
+
+                if (row == true)
+                {
+                    throw new Exception("Successfully Submited.... " + "AccNo: " + checkingAccount.AccountNo + " PIN: " + checkingAccount.PIN);
+                }
+                else
+                {
+                    throw new Exception("Failed");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+
+        public void withdraw(long amount, long pin, string accNo)
+        {
+            string query = "sp_withdraw";
+            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.Parameters.AddWithValue("@amount", SqlDbType.BigInt).Value = amount;
+            sqlCommand.Parameters.AddWithValue("@pin", SqlDbType.BigInt).Value = pin;
+            sqlCommand.Parameters.AddWithValue("@accNo", SqlDbType.NVarChar).Value = accNo;
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
         }
 
         public void ExecuteQuery(string query)
